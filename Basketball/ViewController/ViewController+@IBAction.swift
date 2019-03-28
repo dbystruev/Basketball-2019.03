@@ -10,9 +10,19 @@ import UIKit
 
 extension ViewController {
     @IBAction func screenTapped(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: sceneView)
-        let results = sceneView.hitTest(location, types: [.existingPlaneUsingExtent])
-        guard let result = results.first else { return }
-        addHoop(result: result)
+        
+        if !hoopAdded {
+            
+            let location = sender.location(in: sceneView)
+            let results = sceneView.hitTest(location, types: [.existingPlaneUsingExtent])
+            guard let result = results.first else { return }
+            addHoop(result: result)
+            
+        } else {
+            
+            addBasketball()
+            
+        }
+        
     }
 }
